@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# Editor noise
+*.swp
+*~
+.idea/
+.vscode/
+
+# Claude Code local overrides — machine-specific, never shared
+.claude/settings.local.json
+
+# Hook scratch
+*.err
