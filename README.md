@@ -32,9 +32,14 @@ git clone <your remote> ~/Coding/wrapup
 ln -s ~/Coding/wrapup ~/.claude/skills/wrapup
 ```
 
-Requires `jq` for the hook, and auto-memory enabled in Claude Code — session
+Requires `jq` for the hooks, and auto-memory enabled in Claude Code — session
 start time, duration, and the final exchange all come from the transcripts
 under `~/.claude/projects/`.
+
+Prose style comes from the Orwell/Gowers rules in
+[`plain-english`](https://github.com/b1rdmania/claude-plain-english-skill),
+vendored under `vendor/` so nothing else needs installing. MIT, attribution in
+`vendor/plain-english/`.
 
 ### Run it by hand
 
@@ -135,9 +140,13 @@ SKILL.md                            the skill itself
 templates/wrapup-template.md        the file shape it fills in
 hooks/wrapup-on-session-end.sh      writes the wrapup when a session ends
 hooks/wrapup-on-session-start.sh    offers the last one when a session begins
+vendor/plain-english/               vendored prose rules (MIT, b1rdmania)
 examples/                           a real wrapup
 ```
 
 ## Licence
 
 MIT. See `LICENSE`.
+
+Bundles the `plain-english` skill under `vendor/`, also MIT, copyright
+b1rdmania. Its licence travels with it.

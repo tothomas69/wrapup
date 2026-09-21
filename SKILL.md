@@ -63,7 +63,9 @@ Git forge previews.
 4. **Work through "What to look for" below** silently. Drop every item you
    cannot answer from evidence.
 5. **Write the file** using `templates/wrapup-template.md`.
-6. **Report** one line to the user: the path written and the section count.
+6. **Clean the prose** — see **Voice** below. This is a pass over the file you
+   just wrote, not a rewrite of it.
+7. **Report** one line to the user: the path written and the section count.
    Nothing more — the file is the deliverable.
 
 ## What to look for
@@ -137,8 +139,23 @@ the values. Never reconstruct a quoted exchange from context.
 
 ### Voice
 
-Write in English, in Tom's voice. The rules below are the whole of it — follow
-them rather than falling back to generic assistant prose.
+Write in English. After writing the file, **read
+`vendor/plain-english/PLAIN-ENGLISH.md` (and `REFERENCE.md` beside it) and
+apply those rules to the file you just wrote**, making minimal targeted edits
+to the flagged spans only. That is the Orwell/Gowers ruleset plus the AI-tic
+tables, vendored into this repo so it works without anything else installed.
+
+Leave the quoted **Last Exchange** untouched. It is someone else's words, not
+prose to improve.
+
+If the user has the `plain-english` skill installed, using it instead is fine —
+same rules, same source.
+
+Do **not** route this to `simple-english`. That skill is ASD-STE100 controlled
+language, built for procedures and error messages; it would flatten the voice a
+wrapup depends on.
+
+The short form, if neither is readable:
 
 Orwell's rules, applied to a recap:
 
