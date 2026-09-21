@@ -48,7 +48,7 @@ under `~/.claude/projects/`.
 anything, so the hook starts a short headless run instead.
 
 ```bash
-chmod +x ~/Coding/wrapup/hooks/wrapup-on-session-end.sh
+chmod +x ~/Coding/wrapup/hooks/*.sh
 ```
 
 Then in `~/.claude/settings.json`:
@@ -63,6 +63,18 @@ Then in `~/.claude/settings.json`:
             "type": "command",
             "command": "~/Coding/wrapup/hooks/wrapup-on-session-end.sh",
             "timeout": 10000
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/Coding/wrapup/hooks/wrapup-on-session-start.sh",
+            "timeout": 5000
           }
         ]
       }
@@ -82,6 +94,21 @@ newest file in the project directory, and recap itself.
 
 Hooks declared in skill frontmatter have reportedly been broken since May 2026,
 which is why this lives in `settings.json`.
+
+### Pick up where you left off
+
+The `SessionStart` hook finds the newest file in `docs/wrapup/` and tells
+Claude to offer it — one line, at the top of the session, answer yes and it
+reads the file.
+
+It injects only the title and date, so declining costs you nothing. The
+`startup` matcher keeps it off resumed and compacted sessions, which already
+have the context.
+
+A hook cannot prompt you directly; it can only add text to the session. The
+offer is Claude acting on that text, so it is a nudge rather than a guarantee.
+If you would rather have the previous wrapup unconditionally, drop the matcher
+and have the script emit the file's contents instead of its title.
 
 ## Design notes
 
@@ -106,7 +133,8 @@ repo or left out, so this behaves the same in any project.
 ```
 SKILL.md                            the skill itself
 templates/wrapup-template.md        the file shape it fills in
-hooks/wrapup-on-session-end.sh      SessionEnd handler
+hooks/wrapup-on-session-end.sh      writes the wrapup when a session ends
+hooks/wrapup-on-session-start.sh    offers the last one when a session begins
 examples/                           a real wrapup
 ```
 
