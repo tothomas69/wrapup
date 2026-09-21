@@ -112,4 +112,4 @@ examples/                           a real wrapup
 
 ## Licence
 
-Personal project. All rights reserved.
+MIT. See `LICENSE`.
